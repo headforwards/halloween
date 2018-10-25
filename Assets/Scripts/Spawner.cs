@@ -12,14 +12,24 @@ public class Spawner : MonoBehaviour {
 	
 	IEnumerator SpawnPumpkin()
     {
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(Random.Range(0.1f, 1.5f));
 
         var position = gameObject.transform.position;
 
         position.x += Random.Range(rangeX * -1, rangeX);
         position.z += Random.Range(rangeZ * -1, rangeZ);
 
-        Instantiate(Resources.Load("pumpkin01"), position, gameObject.transform.rotation);
+        var pumpkin = string.Empty;
+        var randomise = (int)System.Math.Floor(Random.Range(1.0f, 3.0f));
+        switch (randomise){
+            case 1: 
+                pumpkin = "pumpkin01";
+                break;
+            default:
+                pumpkin = "pumpkin02";
+                break;
+        } 
+        Instantiate(Resources.Load(pumpkin), position, gameObject.transform.rotation);
 
         StartCoroutine(SpawnPumpkin());
     }

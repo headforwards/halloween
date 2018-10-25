@@ -11,9 +11,11 @@ public class PumpkinKiller : MonoBehaviour
         // when collide destroy the pumpkin.
         if (collision.collider.gameObject.name.StartsWith("pumpkin01"))
         {
+            var hit = collision.collider.gameObject;
+            Instantiate(Resources.Load("splat"), hit.transform.position,Quaternion.identity);
             Destroy(collision.collider.gameObject);
             count++;
-            text.text = "Pumpkin: " + count.ToString();
+            text.text = "Pumpkins: " + count.ToString();
         }
             
     }
