@@ -14,7 +14,8 @@ public class PumpkinKiller : MonoBehaviour
         {
             Instantiate(Resources.Load("splat"), pumpkin.transform.position,Quaternion.identity);
             Destroy(pumpkin);
-            BroadcastMessage("PumpkinSquashed");
+
+            EventManager.TriggerEvent(EventManager.GameEvents.PumpkinSquashed);
         }
-    }
+    }      
 }
