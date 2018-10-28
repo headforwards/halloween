@@ -5,23 +5,16 @@ using UnityEngine.UI;
 
 public class PumpkinKiller : MonoBehaviour
 {
-    int count = 0;
     void OnCollisionEnter(Collision collision)
     {
-
-        var scoreBoard =  GameObject.Find("score").GetComponent<Text>();
+        var pumpkin = collision.collider.gameObject;
 
         // when collide destroy the pumpkin.
-        if (collision.collider.gameObject.name.StartsWith("pumpkin"))
+        if (pumpkin.name.StartsWith("pumpkin"))
         {
-            var hit = collision.collider.gameObject;
-            Instantiate(Resources.Load("splat"), hit.transform.position,Quaternion.identity);
-            Destroy(collision.collider.gameObject);
-            count++;
-            scoreBoard.text = "Pumpkins: " + count.ToString();
+            Instantiate(Resources.Load("splat"), pumpkin.transform.position,Quaternion.identity);
+            Destroy(pumpkin);
+            BroadcastMessage("PumpkinSquashed");
         }
-            
     }
-
-
 }
