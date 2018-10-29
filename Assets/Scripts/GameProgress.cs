@@ -8,7 +8,7 @@ public class GameProgress : MonoBehaviour {
 
     int squashed = 0;
 
-    const int gameLength = 60;
+    const int gameLength = 20;
 
     DateTime gameStarted = DateTime.Now;
 
@@ -57,6 +57,7 @@ public class GameProgress : MonoBehaviour {
 
     void GameStarted()
     {
+        if(gameInProgress) return;
         squashed = 0;
         timeLeftInSeconds = gameLength;
         gameStarted = DateTime.Now;

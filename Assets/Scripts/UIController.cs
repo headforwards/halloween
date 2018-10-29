@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour
 {
 
     DateTime start = DateTime.Now;
+    bool isGameInProgress = false;
     // Use this for initialization
     void Start()
     {
@@ -32,6 +33,8 @@ public class UIController : MonoBehaviour
 
     void GameStarted()
     {
+        if(isGameInProgress) return;
+        isGameInProgress =  true;
         HideUi("GameOver");
         HideUi("WaitingForPlayers");
         HideUi("WaitingToStart");
@@ -40,6 +43,7 @@ public class UIController : MonoBehaviour
 
     void GameOver()
     {
+        isGameInProgress = false;
         HideUi("WaitingForPlayers");
         HideUi("WaitingToStart");
         HideUi("GameInProgress");
@@ -50,12 +54,14 @@ public class UIController : MonoBehaviour
 
     void WaitingToStart()
     {
+        if(isGameInProgress) return;
+        
         HideUi("GameOver");
         HideUi("GameInProgress");
         HideUi("WaitingForPlayers");
         ShowUi("WaitingToStart");
-
-        StartCoroutine(TriggerGameStarted());
+    
+        // StartCoroutine(TriggerGameStarted());
     }
 
     void WaitingForPlayers()
@@ -66,7 +72,7 @@ public class UIController : MonoBehaviour
         HideUi("WaitingToStart");
         ShowUi("WaitingForPlayers");
 
-        StartCoroutine(TriggerWaitToStart());
+        //StartCoroutine(TriggerWaitToStart());
     }
 
     void OnEnable()

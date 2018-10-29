@@ -48,6 +48,7 @@ public class Spawner : MonoBehaviour {
     private bool gameInProgress = false;
 
     void GameStarted(){
+        if(gameInProgress) return;
         gameInProgress = true;
         StartCoroutine(SpawnPumpkin());
     }

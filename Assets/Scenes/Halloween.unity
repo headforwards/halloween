@@ -5495,7 +5495,7 @@ Prefab:
     - target: {fileID: 114429203558937564, guid: 3ab0a5832be264580a400f5a8f46e92e,
         type: 2}
       propertyPath: moveRate
-      value: 1.5
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 114429203558937564, guid: 3ab0a5832be264580a400f5a8f46e92e,
         type: 2}
