@@ -5,16 +5,7 @@ using System.Collections;
 
 public class UIController : MonoBehaviour
 {
-
-    DateTime start = DateTime.Now;
     bool isGameInProgress = false;
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-
     void HideUi(string name)
     {
         var canvasGroup = GameObject.Find(name).GetComponent<CanvasGroup>();
@@ -106,7 +97,6 @@ public class UIController : MonoBehaviour
 
         EventManager.TriggerEvent(EventManager.GameEvents.WaitingToStart);
     }
-
     
     IEnumerator TriggerGameStarted(){
         yield return new WaitForSeconds(1f);
