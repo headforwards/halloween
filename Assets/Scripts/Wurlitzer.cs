@@ -10,8 +10,8 @@ public class Wurlitzer : MonoBehaviour
 
     AudioSource audio = null;
 
-    public int MinPlayTime = 5;
-    public int MaxPlayTime = 10;
+    public int MinPlayTime = 60;
+    public int MaxPlayTime = 120;
 
     float fadeRate = 0.5f;
     float maxVolume = 0.5f;
@@ -64,7 +64,7 @@ public class Wurlitzer : MonoBehaviour
 
     IEnumerator FadeOut()
     {
-        while (audio.volume > 0.0)
+        while (audio.volume > 0.01)
         {
             audio.volume = Mathf.Lerp(audio.volume, 0.0f, fadeRate * Time.deltaTime);
             yield return new WaitForSeconds(0);

@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class GameProgress : MonoBehaviour {
 
+    int TopScore;
+
     int squashed = 0;
 
-    const int gameLength = 20;
+    const int gameLength = 60;
 
     DateTime gameStarted = DateTime.Now;
 
@@ -68,12 +71,17 @@ public class GameProgress : MonoBehaviour {
 
     void GameOver(){
         gameInProgress = false;
+        TopScore = Math.Max(TopScore, squashed);
+        var scoreboard = GameObject.Find("Scoreboard").GetComponent<Text>();
+        scoreboard.text = String.Format("Top squasher's score: {0}", TopScore);
     }
 
     void OnEnable(){
         EventManager.StartListening(EventManager.GameEvents.PumpkinSquashed, PumpkinSquashed);
         EventManager.StartListening(EventManager.GameEvents.GameStarted, GameStarted);
         EventManager.StartListening(EventManager.GameEvents.GameOver, GameOver);
+        var scoreboard = GameObject.Find("Scoreboard").GetComponent<Text>();
+        scoreboard.text = String.Empty;
     }
 
     void OnDisable(){

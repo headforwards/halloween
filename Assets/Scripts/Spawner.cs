@@ -20,6 +20,9 @@ public class Spawner : MonoBehaviour {
 
             position.x += Random.Range(rangeX * -1, rangeX);
             position.z += Random.Range(rangeZ * -1, rangeZ);
+            
+            var rotation = gameObject.transform.rotation;
+            //rotation.z = Random.Range(-30f, 30f);
 
             var pumpkin = string.Empty;
             var randomise = (int)System.Math.Floor(Random.Range(1.0f, 4.0f));
@@ -36,7 +39,7 @@ public class Spawner : MonoBehaviour {
                     break;
             } 
 
-            Instantiate(Resources.Load(pumpkin), position, gameObject.transform.rotation);
+            Instantiate(Resources.Load(pumpkin), position, rotation);
 
             StartCoroutine(SpawnPumpkin());
         } else 
