@@ -11,7 +11,7 @@ public class GameProgress : MonoBehaviour {
 
     int squashed = 0;
 
-    const int gameLength = 60;
+    const int gameLength = 30;
 
     DateTime gameStarted = DateTime.Now;
 

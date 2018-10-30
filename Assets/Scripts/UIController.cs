@@ -30,6 +30,9 @@ public class UIController : MonoBehaviour
         HideUi("WaitingForPlayers");
         HideUi("WaitingToStart");
         ShowUi("GameInProgress");
+
+        var anim = GameObject.FindObjectOfType<Animator>();
+        anim.Play("UpHighToLow");
     }
 
     void GameOver()
@@ -41,6 +44,9 @@ public class UIController : MonoBehaviour
         ShowUi("GameOver");
 
         StartCoroutine(TriggerWaitingForPlayers());
+
+        var anim = GameObject.FindObjectOfType<Animator>();
+        anim.Play("LowToHigh");
     }
 
     void WaitingToStart()
@@ -63,7 +69,7 @@ public class UIController : MonoBehaviour
         HideUi("WaitingToStart");
         ShowUi("WaitingForPlayers");
 
-        //StartCoroutine(TriggerWaitToStart());
+       // StartCoroutine(TriggerGameStarted());
     }
 
     void OnEnable()
@@ -99,7 +105,7 @@ public class UIController : MonoBehaviour
     }
     
     IEnumerator TriggerGameStarted(){
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(10f);
 
         EventManager.TriggerEvent(EventManager.GameEvents.GameStarted);
     }

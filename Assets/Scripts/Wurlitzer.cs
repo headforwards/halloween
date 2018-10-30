@@ -22,7 +22,7 @@ public class Wurlitzer : MonoBehaviour
         cliplist.Add("audio/dark ambient loop", 0.5f);
         cliplist.Add("audio/Halloween-JT", 0.2f);
         cliplist.Add("audio/01. Curious", 0.5f);
-        cliplist.Add("audio/02. Dark House", 0.5f);
+        cliplist.Add("audio/02. Dark House", 1f);
         cliplist.Add("audio/03. Woods", 1f);
 
         audio = gameObject.GetComponent<AudioSource>();
@@ -39,6 +39,7 @@ public class Wurlitzer : MonoBehaviour
         audio.clip = Resources.Load<AudioClip>(key);
         maxVolume = cliplist[key];
         audio.volume = 0;
+        audio.loop = true;
         audio.Play();
     }
 
