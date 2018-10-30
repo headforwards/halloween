@@ -5,43 +5,45 @@ using UnityEngine;
 
 public class Wurlitzer : MonoBehaviour {
 
-	AudioClip[] clips = null;
+	Dictionary<string, float> cliplist = new Dictionary<string, float>();
 
 	AudioSource audio = null;
 
-	public int MinPlayTime = 60;
-	public int MaxPlayTime = 120;
+	public int MinPlayTime = 5;
+	public int MaxPlayTime = 10;
 
 	float fadeRate = 0.5f;
+	float maxVolume = 0.5f;
 
 	// Use this for initialization
 	void Start () {
 
-		var cliplist = new List<string>()
-		{
-			"audio/dark ambient loop",
-			"audio/Halloween-JT",
-			"audio/01. Curious",
-			"audio/02. Dark House",
-			"audio/03. Woods",
-			"audio/04. Rain Forest"
-		};
-
-		clips = cliplist.Select(a=>Resources.Load<AudioClip>(a)).ToArray();
+		cliplist.Add( "audio/dark ambient loop",0.5f);
+		cliplist.Add( 	"audio/Halloween-JT",0.2f);
+		cliplist.Add( 	"audio/01. Curious",0.5f);
+		cliplist.Add( 	"audio/02. Dark House",0.5f);
+		cliplist.Add( 	"audio/03. Woods",1f);
 
 		audio = gameObject.GetComponent<AudioSource>();
+		
+		startRandomTrack();
+	
+		StartCoroutine(fadeIn());
+	}
 
+	void startRandomTrack(){
 		// pick a track to start
-		int idx = (int) Mathf.Floor(Random.Range(0, clips.Length));
-		audio.clip = clips[idx];
+		int idx = (int) Mathf.Floor(Random.Range(0, cliplist.Count()));
+		var key = cliplist.Keys.ToArray()[idx];
+		audio.clip = Resources.Load<AudioClip>(key);
+		maxVolume = cliplist[key];
 		audio.volume = 0;
 		audio.Play();
-		StartCoroutine(fadeIn());
 	}
 
 	IEnumerator fadeIn() 
 	{
-		while (audio.volume  < 0.5f) {
+		while (audio.volume  <= maxVolume) {
 			audio.volume = Mathf.Lerp( audio.volume, 1.0f, fadeRate * Time.deltaTime);
 			yield return new WaitForSeconds(0);
 		}
@@ -60,12 +62,10 @@ public class Wurlitzer : MonoBehaviour {
 
 	IEnumerator fadeOut() {
 
-		while(audio.volume > 0.1){
+		while(audio.volume > 0.0){
 			audio.volume = Mathf.Lerp( audio.volume, 0.0f, fadeRate * Time.deltaTime );
 			yield return new WaitForSeconds(0);
 		}
-
-		audio.volume = 0.0f;
 
 		yield return null;
 
@@ -77,10 +77,7 @@ public class Wurlitzer : MonoBehaviour {
 
 		yield return new WaitForSeconds(0);
 
-		int idx = (int) Mathf.Floor(Random.Range(0, clips.Length));
-		audio.clip = clips[idx];
-		audio.volume = 0;
-		audio.Play();
+		startRandomTrack();
 
 		StartCoroutine(fadeIn());
 
