@@ -23,7 +23,7 @@ public class Wurlitzer : MonoBehaviour
         cliplist.Add("audio/Halloween-JT", 0.2f);
         cliplist.Add("audio/01. Curious", 0.5f);
         cliplist.Add("audio/02. Dark House", 1f);
-        cliplist.Add("audio/03. Woods", 1f);
+        cliplist.Add("audio/dead so dead", 0.2f);
 
         audio = gameObject.GetComponent<AudioSource>();
 

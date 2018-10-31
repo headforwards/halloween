@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour {
             position.z += Random.Range(rangeZ * -1, rangeZ);
             
             var rotation = gameObject.transform.rotation;
-            rotation.x = rotation.x += Random.Range(-30f, 30f);
+            // rotation.x = rotation.x += Random.Range(-30f, 30f);
 
             var pumpkin = string.Empty;
             var randomise = (int)System.Math.Floor(Random.Range(1.0f, 4.0f));
