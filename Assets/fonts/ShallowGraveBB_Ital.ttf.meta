@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b4fb5109471f14cb39fc142d7e34422e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ShallowGrave BB
+  fontNames:
+  - ShallowGrave BB
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 903ebc61c045b4df4b62406dc56d4d32, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

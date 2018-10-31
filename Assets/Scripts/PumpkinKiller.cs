@@ -1,22 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PumpkinKiller : MonoBehaviour
 {
-    int count = 0;
     void OnCollisionEnter(Collision collision)
     {
-        var text = FindObjectOfType<TextMesh>();
+        var pumpkin = collision.collider.gameObject;
+
         // when collide destroy the pumpkin.
-        if (collision.collider.gameObject.name.StartsWith("pumpkin01"))
+        if (pumpkin.name.StartsWith("pumpkin"))
         {
-            Destroy(collision.collider.gameObject);
-            count++;
-            text.text = "Pumpkin: " + count.ToString();
+            Instantiate(Resources.Load("splat"), pumpkin.transform.position,Quaternion.identity);
+            Destroy(pumpkin);
+
+            EventManager.TriggerEvent(EventManager.GameEvents.PumpkinSquashed);
         }
-            
-    }
-
-
+    }      
 }
