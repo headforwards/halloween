@@ -5,6 +5,9 @@ using System.Collections;
 
 public class UIController : MonoBehaviour
 {
+
+    public Animator animator;
+
     bool isGameInProgress = false;
     void HideUi(string name)
     {
@@ -24,15 +27,15 @@ public class UIController : MonoBehaviour
 
     void GameStarted()
     {
-        if(isGameInProgress) return;
-        isGameInProgress =  true;
+        if (isGameInProgress) return;
+        isGameInProgress = true;
         HideUi("GameOver");
         HideUi("WaitingForPlayers");
         HideUi("WaitingToStart");
         ShowUi("GameInProgress");
 
-        var anim = GameObject.FindObjectOfType<Animator>();
-        anim.Play("UpHighToLow");
+        animator.Play("UpHighToLow");
+        Console.WriteLine("UpHighToLow");
     }
 
     void GameOver()
@@ -45,20 +48,20 @@ public class UIController : MonoBehaviour
 
         StartCoroutine(TriggerWaitingForPlayers());
 
-        var anim = GameObject.FindObjectOfType<Animator>();
-        anim.Play("LowToHigh");
+        animator.Play("LowToHigh");
+        Console.WriteLine("LowToHigh");
     }
 
     void WaitingToStart()
     {
-        if(isGameInProgress) return;
-        
+        if (isGameInProgress) return;
+
         HideUi("GameOver");
         HideUi("GameInProgress");
         HideUi("WaitingForPlayers");
         ShowUi("WaitingToStart");
-    
-        // StartCoroutine(TriggerGameStarted());
+
+        //  StartCoroutine(TriggerGameStarted());
     }
 
     void WaitingForPlayers()
@@ -98,13 +101,15 @@ public class UIController : MonoBehaviour
     }
 
     // debug help
-    IEnumerator TriggerWaitToStart(){
+    IEnumerator TriggerWaitToStart()
+    {
         yield return new WaitForSeconds(1f);
 
         EventManager.TriggerEvent(EventManager.GameEvents.WaitingToStart);
     }
-    
-    IEnumerator TriggerGameStarted(){
+
+    IEnumerator TriggerGameStarted()
+    {
         yield return new WaitForSeconds(10f);
 
         EventManager.TriggerEvent(EventManager.GameEvents.GameStarted);

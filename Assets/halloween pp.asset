@@ -50,7 +50,7 @@ MonoBehaviour:
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       reflection:
         blendType: 0
@@ -71,9 +71,9 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 1
     m_Settings:
-      focusDistance: 6.34
-      aperture: 32
-      focalLength: 277
+      focusDistance: 7.45
+      aperture: 10.3
+      focalLength: 189
       useCameraFov: 0
       kernelSize: 1
   motionBlur:
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_Settings:
       shutterAngle: 270
       sampleCount: 10
-      frameBlending: 0.73
+      frameBlending: 0.074
   eyeAdaptation:
     m_Enabled: 0
     m_Settings:
@@ -113,9 +113,9 @@ MonoBehaviour:
     m_Settings:
       tonemapping:
         tonemapper: 2
-        neutralBlackIn: 0.003
+        neutralBlackIn: 0.02
         neutralWhiteIn: 10
-        neutralBlackOut: -0.0177
+        neutralBlackOut: 0
         neutralWhiteOut: 10
         neutralWhiteLevel: 5.3
         neutralWhiteClip: 10
@@ -134,9 +134,9 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0.63469994, g: 1, b: 0.986486, a: 0}
-          power: {r: 0.8554378, g: 0.90305614, b: 1, a: 0}
-          offset: {r: 0.578524, g: 0.59919965, b: 1, a: 0}
+          slope: {r: 0, g: 0, b: 0, a: 0}
+          power: {r: 0, g: 0, b: 0, a: 0}
+          offset: {r: 0, g: 0, b: 0, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -313,7 +313,7 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       colored: 1
-      intensity: 0.184
+      intensity: 0.319
       size: 1
       luminanceContribution: 0.8
   vignette:
@@ -322,8 +322,8 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.5
-      smoothness: 0.237
+      intensity: 0.486
+      smoothness: 0.415
       roundness: 1
       mask: {fileID: 0}
       opacity: 1

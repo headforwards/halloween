@@ -12,7 +12,9 @@ public class EventManager : MonoBehaviour {
         WaitingToStart,
         GameStarted,
         PumpkinSquashed   ,
-        GameOver     
+        GameOver,
+
+        PlayerJumped     
     }
 
     private Dictionary <string, UnityEvent> eventDictionary;

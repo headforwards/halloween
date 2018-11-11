@@ -7,7 +7,7 @@ public class PumpkinKiller : MonoBehaviour
 {
     void OnCollisionEnter(Collision collision)
     {
-        var pumpkin = collision.collider.gameObject;
+        var pumpkin = collision.gameObject;
 
         // when collide destroy the pumpkin.
         if (pumpkin.name.StartsWith("pumpkin"))

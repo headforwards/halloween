@@ -46,6 +46,9 @@ public class KinectGestureListener : MonoBehaviour, KinectGestures.GestureListen
             case KinectGestures.Gestures.Stop:
                 BroadcastMessage("EndGame");
                 break;
+            case KinectGestures.Gestures.Jump:
+                EventManager.TriggerEvent(EventManager.GameEvents.PlayerJumped);
+                break; 
         }
 
         return true;

@@ -22,7 +22,7 @@ public class Wurlitzer : MonoBehaviour
         cliplist.Add("audio/dark ambient loop", 0.5f);
         cliplist.Add("audio/Halloween-JT", 0.2f);
         cliplist.Add("audio/01. Curious", 0.5f);
-        cliplist.Add("audio/02. Dark House", 1f);
+        cliplist.Add("audio/02. Dark House", 0.99f);
         cliplist.Add("audio/dead so dead", 0.2f);
 
         audio = gameObject.GetComponent<AudioSource>();
@@ -41,6 +41,8 @@ public class Wurlitzer : MonoBehaviour
         audio.volume = 0;
         audio.loop = true;
         audio.Play();
+
+        StartCoroutine(FadeIn());
     }
 
     IEnumerator FadeIn()
@@ -60,7 +62,7 @@ public class Wurlitzer : MonoBehaviour
 
         yield return new WaitForSeconds(playTime);
 
-        StartCoroutine(FadeOut());
+       StartCoroutine( FadeOut());
     }
 
     IEnumerator FadeOut()
@@ -71,17 +73,7 @@ public class Wurlitzer : MonoBehaviour
             yield return new WaitForSeconds(0);
         }
 
-        yield return null;
-
-        StartCoroutine(SwitchTracks());
-    }
-
-    IEnumerator SwitchTracks()
-    {
-        yield return new WaitForSeconds(0);
-
         StartRandomTrack();
-
-        StartCoroutine(FadeIn());
     }
+
 }
